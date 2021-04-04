@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Answer {
     private final String value;
+
     public Answer(String value){
         this.value = value;
     }

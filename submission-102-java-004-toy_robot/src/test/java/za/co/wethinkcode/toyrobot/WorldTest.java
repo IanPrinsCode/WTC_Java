@@ -1,0 +1,63 @@
+package za.co.wethinkcode.toyrobot;
+
+import org.junit.jupiter.api.Test;
+import za.co.wethinkcode.toyrobot.maze.EmptyMaze;
+import za.co.wethinkcode.toyrobot.world.IWorld;
+import za.co.wethinkcode.toyrobot.world.TextWorld;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class WorldTest {
+
+    @Test
+    void updatePosition() {
+        IWorld world = new TextWorld(new EmptyMaze());
+        assertEquals(IWorld.CENTRE, world.getPosition());
+        world.updatePosition(100);
+        Position newPosition = new Position(IWorld.CENTRE.getX(), IWorld.CENTRE.getY() + 100);
+        assertEquals(newPosition, world.getPosition());
+    }
+
+    @Test
+    void updateDirectionRight() {
+        IWorld world = new TextWorld(new EmptyMaze());
+        world.updateDirection(true);
+        assertEquals(IWorld.Direction.RIGHT, world.getCurrentDirection());
+        world.updatePosition(100);
+        Position newPosition = new Position(IWorld.CENTRE.getX() + 100, IWorld.CENTRE.getY());
+        assertEquals(newPosition, world.getPosition());
+    }
+
+    @Test
+    void updateDirectionLeft() {
+        IWorld world = new TextWorld(new EmptyMaze());
+        world.updateDirection(false);
+        assertEquals(IWorld.Direction.LEFT, world.getCurrentDirection());
+        world.updatePosition(100);
+        Position newPosition = new Position(IWorld.CENTRE.getX() - 100, IWorld.CENTRE.getY());
+        assertEquals(newPosition, world.getPosition());
+    }
+
+    @Test
+    void isNewPositionAllowed() {
+        IWorld world = new TextWorld(new EmptyMaze());
+        assertTrue(world.isNewPositionAllowed(new Position(100,0)));
+        assertTrue(world.isNewPositionAllowed(new Position(100,100)));
+        assertFalse(world.isNewPositionAllowed(new Position(201,0)));
+        assertFalse(world.isNewPositionAllowed(new Position(-201,0)));
+    }
+
+    @Test
+    void reset() {
+        IWorld world = new TextWorld(new EmptyMaze());
+        world.updatePosition(150);
+        world.updateDirection(true);
+        assertEquals(IWorld.Direction.RIGHT, world.getCurrentDirection());
+
+        world.reset();
+
+        assertEquals(IWorld.Direction.UP, world.getCurrentDirection());
+        assertEquals(IWorld.CENTRE, world.getPosition());
+        assertEquals(world.getObstacles().size(), 0);
+    }
+}
