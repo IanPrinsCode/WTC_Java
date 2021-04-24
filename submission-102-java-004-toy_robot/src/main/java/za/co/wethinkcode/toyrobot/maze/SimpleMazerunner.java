@@ -27,10 +27,13 @@ public class SimpleMazerunner implements MazeRunner{
         switch (edgeDirection) {
             case LEFT:
                 this.edge = "left";
+                break;
             case RIGHT:
                 this.edge = "right";
+                break;
             case UP:
                 this.edge = "top";
+                break;
             case DOWN:
                 this.edge = "bottom";
         }
@@ -105,9 +108,7 @@ public class SimpleMazerunner implements MazeRunner{
         }
         if (x > 100 || x < -100) {
             return true;
-        } else if (y > 200 || y < -200)
-            return true;
-        return false;
+        } else return y > 200 || y < -200;
     }
 
 
