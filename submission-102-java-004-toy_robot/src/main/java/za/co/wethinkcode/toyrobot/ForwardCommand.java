@@ -20,6 +20,10 @@ public class ForwardCommand extends Command {
     }
 
 
+    /**
+     * Constructor
+     * @param argument arguments for command
+     */
     public ForwardCommand(String argument) {
         super("forward", argument);
     }

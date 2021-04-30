@@ -15,6 +15,10 @@ public class BackCommand extends Command {
     }
 
 
+    /**
+     * Constructor
+     * @param argument arguments for command
+     */
     public BackCommand(String argument) {
         super("back", argument);
     }

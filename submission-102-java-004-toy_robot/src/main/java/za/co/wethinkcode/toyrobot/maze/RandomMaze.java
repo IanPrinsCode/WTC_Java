@@ -5,6 +5,9 @@ import za.co.wethinkcode.toyrobot.world.SquareObstacle;
 import java.util.Random;
 
 public class RandomMaze extends AbstractMaze{
+    /**
+     * Constructor
+     */
     public RandomMaze() {
         Random random = new Random();
         boolean counterX;

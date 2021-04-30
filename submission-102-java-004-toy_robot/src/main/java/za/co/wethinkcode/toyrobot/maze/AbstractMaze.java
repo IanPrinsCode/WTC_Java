@@ -26,6 +26,10 @@ public abstract class AbstractMaze implements Maze{
     }
 
 
+    /**
+     * Adds an obstacles to obstacle list.
+     * @param obstacle obstacle to add
+     */
     public void addObstacle(Obstacle obstacle) {
         this.obstacles.add(obstacle);
     }

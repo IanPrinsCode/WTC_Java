@@ -17,6 +17,9 @@ public class HelpCommand extends Command {
     }
 
 
+    /**
+     * Constructor
+     */
     public HelpCommand() {
         super("help");
     }

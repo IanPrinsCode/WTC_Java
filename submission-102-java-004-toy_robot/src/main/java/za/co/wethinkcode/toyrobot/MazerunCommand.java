@@ -4,9 +4,16 @@ import za.co.wethinkcode.toyrobot.maze.SimpleMazerunner;
 import za.co.wethinkcode.toyrobot.world.IWorld;
 
 public class MazerunCommand extends Command{
+    /**
+     * Constructor
+     * @param argument which side to solve the maze towards
+     */
     public MazerunCommand(String argument) { super("mazerun", argument); }
 
 
+    /**
+     * Constructor
+     */
     public MazerunCommand() { super("mazerun"); }
 
 

@@ -17,6 +17,10 @@ public abstract class AbstractWorld implements IWorld{
     public List<Obstacle> obstacles;
     private final Maze maze;
 
+    /**
+     * Constructor
+     * @param maze maze object to use in world
+     */
     public AbstractWorld(Maze maze) {
         this.position = CENTRE;
         this.currentDirection = Direction.UP;
@@ -25,16 +29,27 @@ public abstract class AbstractWorld implements IWorld{
     }
 
 
+    /**
+     * @return Current position on grid
+     */
     public Position getPosition() {
         return this.position;
     }
 
 
+    /**
+     * @return Current facing direction on grid
+     */
     public Direction getCurrentDirection() {
         return this.currentDirection;
     }
 
 
+    /**
+     * Check if the new position you are moving to is a valid move.
+     * @param position the position to check
+     * @return boolean to say if it is valid or not
+     */
     public boolean isNewPositionAllowed(Position position) {
         this.blocked = false;
 
@@ -46,12 +61,18 @@ public abstract class AbstractWorld implements IWorld{
     }
 
 
+    /**
+     * @return boolean to say if you are at an edge of the grid or not
+     */
     public boolean isAtEdge() {
         return position.getX() == 100 || position.getX() == -100 ||
                 position.getY() == 200 || position.getY() == -200;
     }
 
 
+    /**
+     * Reset position, direction and the map for a new game
+     */
     public void reset() {
         this.position = CENTRE;
         this.currentDirection = Direction.UP;
@@ -59,6 +80,9 @@ public abstract class AbstractWorld implements IWorld{
     }
 
 
+    /**
+     * @return List of obstacles that the current map consists of
+     */
     public List<Obstacle> getObstacles() {
         return this.obstacles;
     }

@@ -4,6 +4,9 @@ import za.co.wethinkcode.toyrobot.Position;
 import za.co.wethinkcode.toyrobot.world.SquareObstacle;
 
 public class DesignedMaze extends AbstractMaze{
+    /**
+     * Constructor
+     */
     public DesignedMaze () {
         drawHorisontal(new Position(-80, 160), new Position(80, 160));
         drawHorisontal(new Position(-80, -160), new Position(80, -160));
@@ -17,6 +20,11 @@ public class DesignedMaze extends AbstractMaze{
     }
 
 
+    /**
+     * Adds obstacles to obstacle list to form a horizontal line.
+     * @param a start position
+     * @param b end position
+     */
     public void drawHorisontal(Position a, Position b) {
         int from;
         int to;
@@ -36,6 +44,11 @@ public class DesignedMaze extends AbstractMaze{
     }
 
 
+    /**
+     * Adds obstacles to obstacle list to form a vertical line.
+     * @param a start position
+     * @param b end position
+     */
     public void drawVertical(Position a, Position b) {
         int from;
         int to;

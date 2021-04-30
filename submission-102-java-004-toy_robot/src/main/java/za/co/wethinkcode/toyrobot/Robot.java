@@ -1,7 +1,6 @@
 package za.co.wethinkcode.toyrobot;
 
 import za.co.wethinkcode.toyrobot.world.AbstractWorld;
-import za.co.wethinkcode.toyrobot.world.IWorld;
 import za.co.wethinkcode.toyrobot.world.TextWorld;
 import za.co.wethinkcode.toyrobot.world.TurtleWorld;
 
@@ -11,6 +10,10 @@ public class Robot {
     private String name;
     public History history;
 
+    /**
+     * Constructor
+     * @param name name of robot
+     */
     public Robot(String name) {
         this.name = name;
         this.status = "Ready";
@@ -18,6 +21,9 @@ public class Robot {
     }
 
 
+    /**
+     * @return world object associated with current robot
+     */
     public AbstractWorld getWorld() {
         if(Play.worldType.equalsIgnoreCase("turtle")){
             return new TurtleWorld(Play.currentMaze);
@@ -29,11 +35,19 @@ public class Robot {
     }
 
 
+    /**
+     * @return message to print out
+     */
     public String getStatus() {
         return this.status;
     }
 
 
+    /**
+     * Executes specified command
+     * @param command specified command
+     * @return boolean
+     */
     public boolean handleCommand(Command command) {
         return command.execute(this);
     }
@@ -46,11 +60,18 @@ public class Robot {
     }
 
 
+    /**
+     * Sets new status.
+     * @param status new status
+     */
     public void setStatus(String status) {
         this.status = status;
     }
 
 
+    /**
+     * @return name of robot
+     */
     public String getName() {
         return name;
     }

@@ -10,6 +10,10 @@ public class Play {
     public static String mazeType;
     public static Maze currentMaze;
 
+    /**
+     * Main game loop
+     * @param args arguments to run program with
+     */
     public static void main(String[] args) {
         try {
             worldType = args[0];
@@ -65,6 +69,11 @@ public class Play {
     }
 
 
+    /**
+     * Takes input from user
+     * @param prompt Message to display in terminal before receiving input from user
+     * @return received input
+     */
     private static String getInput(String prompt) {
         System.out.println(prompt);
         String input = scanner.nextLine();
@@ -77,6 +86,10 @@ public class Play {
     }
 
 
+    /**
+     * Print a message to console.
+     * @param output message to print
+     */
     public static void display(String output) {
         System.out.println(output);
     }

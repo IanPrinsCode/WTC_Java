@@ -29,6 +29,11 @@ public class ReplayCommand extends Command {
     }
 
 
+    /**
+     * Does a reversed replay of commands for a specified range.
+     * @param argument range argument
+     * @param target robot to apply replay to
+     */
     private static void reversedRangeReplay(String argument, Robot target) {
         String[] args = argument.split(" ");
         String range = args[1];
@@ -82,6 +87,12 @@ public class ReplayCommand extends Command {
     }
 
 
+    /**
+     * Checks replay arguments to decide which replay command should be triggered.
+     * @param argument replay arguments
+     * @param target robot to apply replay to
+     * @return string resembling which replay to trigger
+     */
     private static String testReplayArg(String argument, Robot target) {
         if (argument.contains(" ")) {
             return "reversedRange";
@@ -127,6 +138,10 @@ public class ReplayCommand extends Command {
     }
 
 
+    /**
+     * Does a replay command in reverse.
+     * @param target robot to apply replay to
+     */
     private static void reversedReplay(Robot target) {
         List<String> historyList = History.getHistory();
         Collections.reverse(historyList);
@@ -140,6 +155,11 @@ public class ReplayCommand extends Command {
     }
 
 
+    /**
+     * Does a replay for a specified range.
+     * @param argument specified range
+     * @param target robot to apply replay to
+     */
     private static void rangeReplay(String argument, Robot target) {
         List<String> historyList = History.getHistory();
         List<String> newList = new ArrayList<>();
@@ -166,6 +186,11 @@ public class ReplayCommand extends Command {
     }
 
 
+    /**
+     * Replay the last specified number of commands.
+     * @param argument specified number to replay
+     * @param target robot to apply replay to
+     */
     private static void numberReplay(String argument, Robot target) {
         List<String> historyList = History.getHistory();
         List<String> newList = new ArrayList<>();
@@ -189,6 +214,10 @@ public class ReplayCommand extends Command {
     }
 
 
+    /**
+     * Does a replay of all commands in history list.
+     * @param target robot to apply replay to
+     */
     private static void normalReplay(Robot target) {
         List<String> historyList = History.getHistory();
 
@@ -201,9 +230,16 @@ public class ReplayCommand extends Command {
     }
 
 
+    /**
+     * Constructor
+     */
     public ReplayCommand() {super("replay");}
 
 
+    /**
+     * Constructor
+     * @param argument command arguments
+     */
     public ReplayCommand(String argument) {
         super("replay", argument);
     }

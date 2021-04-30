@@ -10,6 +10,11 @@ import java.awt.*;
 public class TurtleWorld extends AbstractWorld{
     public Turtle turtle = new Turtle(0, 0 , 90);
 
+
+    /**
+     * Constructor
+     * @param maze maze object to use in world
+     */
     public TurtleWorld(Maze maze) {
         super(maze);
         this.obstacles = maze.getObstacles();
@@ -25,6 +30,9 @@ public class TurtleWorld extends AbstractWorld{
     }
 
 
+    /**
+     * Draws the border of the map in turtle graphics.
+     */
     public void drawConstraint() {
         turtle.setColor(Color.cyan);
         turtle.setPosition(-100, -200);
@@ -39,6 +47,11 @@ public class TurtleWorld extends AbstractWorld{
     }
 
 
+    /**
+     *
+     * @param nrSteps steps to move in current direction
+     * @return Status of movement as enum
+     */
     public UpdateResponse updatePosition(int nrSteps) {
         int newX = this.position.getX();
         int newY = this.position.getY();
@@ -71,6 +84,10 @@ public class TurtleWorld extends AbstractWorld{
     }
 
 
+    /**
+     * Turns turtle to face a new direction.
+     * @param turnRight if true, then turn 90 degrees to the right, else turn left.
+     */
     public void updateDirection(boolean turnRight) {
         if (turnRight) {
             switch (getCurrentDirection()) {
@@ -112,6 +129,10 @@ public class TurtleWorld extends AbstractWorld{
     }
 
 
+    /**
+     * Draws a single obstacle in turtle graphics.
+     * @param obstacle obstacle to draw
+     */
     public void drawObstacle(Obstacle obstacle) {
         int xAxis = obstacle.getBottomLeftX();
         int yAxis = obstacle.getBottomLeftY();
@@ -129,6 +150,9 @@ public class TurtleWorld extends AbstractWorld{
     }
 
 
+    /**
+     * Draws all obstacles in turtle graphics.
+     */
     public void showObstacles() {
         for (Obstacle obstacle : this.obstacles) {
             drawObstacle(obstacle);

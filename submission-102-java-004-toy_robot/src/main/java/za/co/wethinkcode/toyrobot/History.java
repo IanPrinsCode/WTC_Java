@@ -14,11 +14,18 @@ public class History {
             "sprint"));
 
 
+    /**
+     * Clears history list.
+     */
     public static void clearHistory() {
         history.clear();
     }
 
 
+    /**
+     * Adds a command to the history list
+     * @param command command to add
+     */
     public void append(String command) {
         String[] commandArgs = command.split(" ");
 
@@ -28,11 +35,18 @@ public class History {
     }
 
 
+    /**
+     * Removes a command from history list.
+     * @param command command to remove
+     */
     public void remove(String command) {
         history.remove(command);
     }
 
 
+    /**
+     * @return history list
+     */
     public static List<String> getHistory() {
         return history;
     }

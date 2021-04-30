@@ -6,26 +6,46 @@ public class SquareObstacle implements Obstacle {
     private int bottomLeftX;
     private int bottomLeftY;
 
+    /**
+     * Constructor
+     * @param x x value of bottomLeft coordinate
+     * @param y y value of bottomLeft coordinate
+     */
     public SquareObstacle(int x, int y) {
         this.bottomLeftX = x;
         this.bottomLeftY = y;
     }
 
+
+    /**
+     * @return x value of bottomLeft coordinate
+     */
     public int getBottomLeftX() {
         return this.bottomLeftX;
     }
 
 
+    /**
+     * @return y value of bottomLeft coordinate
+     */
     public int getBottomLeftY() {
         return this.bottomLeftY;
     }
 
 
+    /**
+     * @return size of obstacle
+     */
     public int getSize() {
         return 5;
     }
 
 
+    /**
+     * Checks if position is blocked.
+     * @param position the position to check
+     * @return boolean saying if it is blocked or not
+     */
     public boolean blocksPosition(Position position) {
         for (int i = bottomLeftX; i <= bottomLeftX + 4; i++) {
             for (int j = bottomLeftY; j <= bottomLeftY + 4; j++) {
@@ -38,6 +58,12 @@ public class SquareObstacle implements Obstacle {
     }
 
 
+    /**
+     * Check if a path you are following for a movement, is blocked or not.
+     * @param a first position
+     * @param b second position
+     * @return
+     */
     public boolean blocksPath(Position a, Position b) {
         int minY;
         int maxY;

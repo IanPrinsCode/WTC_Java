@@ -4,31 +4,56 @@ public abstract class Command {
     private final String name;
     private String argument;
 
+    /**
+     * Trigger the functionality of specified command.
+     * @param target Robot object to apply command to
+     * @return boolean to continue program
+     */
     public abstract boolean execute(Robot target);
 
 
+    /**
+     * Constructor
+     * @param name Type of command
+     */
     public Command(String name){
         this.name = name.trim().toLowerCase();
         this.argument = "";
     }
 
 
+    /**
+     * Constructor
+     * @param name Type of command
+     * @param argument Command arguments
+     */
     public Command(String name, String argument) {
         this(name);
         this.argument = argument.trim();
     }
 
 
+    /**
+     * @return type of command
+     */
     public String getName() {                                                                           //<2>
         return name;
     }
 
 
+    /**
+     * @return arguments for command
+     */
     public String getArgument() {
         return this.argument;
     }
 
 
+    /**
+     * Creates a command object based off of the instruction input from the user.
+     * @param instruction Instruction input from user. Specifies which command object to create.
+     * @return Command object
+     */
     public static Command create(String instruction) {
         String[] args = instruction.toLowerCase().trim().split(" ");
         switch (args[0]){

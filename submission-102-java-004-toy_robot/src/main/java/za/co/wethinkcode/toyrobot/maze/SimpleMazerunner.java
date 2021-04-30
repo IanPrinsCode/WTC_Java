@@ -17,6 +17,12 @@ public class SimpleMazerunner implements MazeRunner{
     private int steps;
     private String edge;
 
+    /**
+     * Does mazerun to specified edge.
+     * @param target the instance of Robot to use to run the maze
+     * @param edgeDirection the edge to try and reach, one of Direction.UP, RIGHT, DOWN, or LEFT
+     * @return boolean to continue program
+     */
     public boolean mazeRun(Robot target, IWorld.Direction edgeDirection) {
         this.steps = 0;
         this.target = target;
@@ -41,15 +47,14 @@ public class SimpleMazerunner implements MazeRunner{
         while (true) {
             List<Integer> currentPosition = constructKey(this.position.getX(), this.position.getY());
 
-            if (edgeDirection==IWorld.Direction.UP || edgeDirection== IWorld.Direction.DOWN) {
-                if (currentPosition.get(1).equals(200) || currentPosition.get(1).equals(-200)) {
-                    break;
-                }
-            } else if (edgeDirection==IWorld.Direction.LEFT || edgeDirection== IWorld.Direction.RIGHT) {
-                if (currentPosition.get(0).equals(100) || currentPosition.get(0).equals(-100)) {
-                    break;
-                }
-            }
+            if (edgeDirection == IWorld.Direction.UP && currentPosition.get(1).equals(200))
+                break;
+            else if (edgeDirection == IWorld.Direction.DOWN && currentPosition.get(1).equals(-200))
+                break;
+            else if (edgeDirection == IWorld.Direction.LEFT && currentPosition.get(0).equals(-100))
+                break;
+            else if (edgeDirection == IWorld.Direction.RIGHT && currentPosition.get(0).equals(100))
+                break;
 
             List<Integer> blockInFront = getFrontCoordinate();
             doMove(blockInFront);
@@ -61,6 +66,10 @@ public class SimpleMazerunner implements MazeRunner{
     }
 
 
+    /**
+     * Gets coordinate in front of turle based off of currentDirection and currentPosition.
+     * @return coordinate in front
+     */
     public List<Integer> getFrontCoordinate() {
         switch (this.currentDirection) {
             case UP:
@@ -76,6 +85,10 @@ public class SimpleMazerunner implements MazeRunner{
     }
 
 
+    /**
+     * Does a movement depending on if the coordinate in front is blocked or not.
+     * @param blockInFront coordinate in front of turtle
+     */
     public void doMove(List<Integer> blockInFront) {
         if (!isBlocked(blockInFront.get(0), blockInFront.get(1))) {
             doForward();
@@ -85,7 +98,13 @@ public class SimpleMazerunner implements MazeRunner{
     }
 
 
-    public List<Integer> constructKey(Integer x, Integer y) {
+    /**
+     * Takes two values and makes a list of integers to use as a coordinate.
+     * @param x x value of coordinate as an integer
+     * @param y y value of coordinate as an integer
+     * @return coordinate list
+     */
+    public List<Integer> constructKey(int x, int y) {
         Position position = new Position(x, y);
         List<Integer> elements = new ArrayList<>();
         elements.add(position.getX());
@@ -94,6 +113,12 @@ public class SimpleMazerunner implements MazeRunner{
     }
 
 
+    /**
+     * Checks if a coordinate is blocked on the map.
+     * @param x x value of coordinate as an integer
+     * @param y y value of coordinate as an integer
+     * @return boolean to say if it is blocked or not
+     */
     public boolean isBlocked(int x, int y) {
         for (Obstacle obs : this.obstacles) {
             int xPos = obs.getBottomLeftX();
@@ -112,6 +137,9 @@ public class SimpleMazerunner implements MazeRunner{
     }
 
 
+    /**
+     * Triggers a forward movement and updates position.
+     */
     public void doForward() {
         Command command = Command.create("forward 1");
         this.target.handleCommand(command);
@@ -121,6 +149,9 @@ public class SimpleMazerunner implements MazeRunner{
     }
 
 
+    /**
+     * Triggers a left turn and updates currentDirection.
+     */
     public void doLeft() {
         Command command = Command.create("left");
         this.target.handleCommand(command);
@@ -130,6 +161,9 @@ public class SimpleMazerunner implements MazeRunner{
     }
 
 
+    /**
+     * @return The amount of moves made to escape the maze.
+     */
     public int getMazeRunCost() {
         return this.steps;
     }

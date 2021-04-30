@@ -1,6 +1,9 @@
 package za.co.wethinkcode.toyrobot;
 
 public class ShutdownCommand extends Command {
+    /**
+     * Constructor
+     */
     public ShutdownCommand() {
         super("off");
     }

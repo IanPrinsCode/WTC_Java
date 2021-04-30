@@ -9,5 +9,8 @@ public class LeftCommand extends Command{
     }
 
 
+    /**
+     * Constructor
+     */
     public LeftCommand() {super("left");}
 }

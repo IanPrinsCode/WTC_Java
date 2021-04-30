@@ -27,6 +27,10 @@ public class SprintCommand extends Command {
     }
 
 
+    /**
+     * Constructor
+     * @param argument how many times to sprint
+     */
     public SprintCommand(String argument) {
         super("sprint", argument);
     }

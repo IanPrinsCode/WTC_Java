@@ -9,6 +9,9 @@ public class RightCommand extends Command{
     }
 
 
+    /**
+     * Constructor
+     */
     public RightCommand() {super("right");}
 }
 
